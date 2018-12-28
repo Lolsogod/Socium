@@ -124,6 +124,5 @@ app.post("/s/all/:id/comments", function (req, res) {
 });
 
 //starting
-app.listen(1000, function () {
-    console.log("app listening on port 1000!");
-});
+app.listen(process.env.PORT || 1000, process.env.IP);
+console.log("Server started on port 1000"); 
