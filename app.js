@@ -12,15 +12,15 @@ console.log("Loading please wait...");
 
 
 //init
-var express        = require("express"),
-    app            = express(),
-    bodyParser     = require('body-parser'),
-    mongoose       = require("mongoose"),
+var express = require("express"),
+    app = express(),
+    bodyParser = require('body-parser'),
+    mongoose = require("mongoose"),
     methodOverride = require("method-override"),
-    Post           = require("./modules/post"),
-    Comment        = require("./modules/comment");
-    env            = require('dotenv').config();
-    
+    Post = require("./modules/post"),
+    Comment = require("./modules/comment"),
+    env = require('dotenv').config();
+
 
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true
@@ -45,10 +45,11 @@ app.get("/s/all", function (req, res) {
     Post.find({}, function (err, posts) {
         if (err) {
             console.log(err);
-        } else {res.render("index", {
-            posts: posts
-        });
-    }
+        } else {
+            res.render("index", {
+                posts: posts
+            });
+        }
     });
 });
 //new
@@ -82,13 +83,14 @@ app.put("/s/all/:id", function (req, res) {
 
 //show
 app.get("/s/all/:id", function (req, res) {
-    Post.findById(req.params.id).populate("comments").exec( function (err, foundPost) {
+    Post.findById(req.params.id).populate("comments").exec(function (err, foundPost) {
         if (err) {
             console.log(err);
-        } else {res.render("show", {
-            post: foundPost
-        });
-       }
+        } else {
+            res.render("show", {
+                post: foundPost
+            });
+        }
     });
 });
 //delete
@@ -108,14 +110,14 @@ app.delete("/s/all/:id", function (req, res) {
 
 //new
 app.post("/s/all/:id/comments", function (req, res) {
-    Post.findById(req.params.id, function(err, foundPost){
+    Post.findById(req.params.id, function (err, foundPost) {
         if (err) {
             console.log(err);
         } else {
-            Comment.create(req.body.Comment, function(err, comment){
+            Comment.create(req.body.Comment, function (err, comment) {
                 if (err) {
                     console.log(err);
-                } else{
+                } else {
                     foundPost.comments.push(comment);
                     foundPost.save();
                     res.redirect("/s/all/" + foundPost._id);
@@ -126,7 +128,6 @@ app.post("/s/all/:id/comments", function (req, res) {
 });
 
 //starting
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(process.env.PORT, process.env.IP, function () {
     console.log("Server started on port 1000");
 });
- 

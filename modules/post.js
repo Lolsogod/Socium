@@ -8,11 +8,10 @@ var postSchema = {
     title: String,
     img: String,
     body: String,
-    comments:[{
+    comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comment"
     }]
-
 };
 
 module.exports = mongoose.model("post", postSchema);
