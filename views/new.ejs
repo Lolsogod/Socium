@@ -1,0 +1,20 @@
+<% include partials/header %>
+<div class="col-md-3 "></div>
+<div class="col-md-6 ">
+  <div class="card">
+    <div class="card-header">
+      <h4>Create new post</h4>
+    </div>
+    <div class="card-body">
+      <form action="/s/all" method="POST">
+        <input type="text" class="mt-1 form-control" name="Post[title]" placeholder="Title...">
+        <input type="text" class="mt-1 form-control" name="Post[img]" placeholder="Image url..." required>
+        <textarea class="mt-1 form-control nores" name="Post[body]" placeholder="Text.." rows="3"></textarea>
+        <input type="submit" class="ml-2 mt-2 btn btn-socium float-right">
+        <a href="/s/all" class="mt-2 btn btn-outline-soc float-right">Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<% include partials/footer %>

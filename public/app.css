@@ -1,0 +1,148 @@
+#wc-ico {
+    font-size: 80px;
+}
+
+body {
+    background-color: #DAE0E6 !important;
+}
+
+.nores {
+    resize: none;
+}
+
+.btn,
+input {
+    border-radius: 4px !important;
+}
+
+@media screen and (max-width: 768px) {
+    .lmenu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .emp {
+        display: none;
+    }
+}
+
+.soc {
+    color: #1976D2 !important;
+}
+
+.bg-grad {
+    background-image: linear-gradient(to left, #1b77d3, #1560aa) !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: #1976D2 !important;
+}
+
+.nav-link:not(.active) {
+    color: #343A40 !important;
+}
+
+.btn-socium {
+    color: #fff;
+    background-color: #1976D2;
+    border-color: #1668B8;
+}
+
+.btn-socium:hover {
+    color: #fff;
+    background-color: #1668B8;
+    border-color: #1668B8;
+}
+
+.btn-socium:focus,
+.btn-socium.focus,
+input:focus {
+    border-color: #1668B8;
+    box-shadow: 0 0 0 0.2rem rgba(22, 104, 184, 0.51) !important;
+}
+
+
+.btn-outline-drop {
+    color: black;
+    background-color: transparent;
+    background-image: none;
+    border-color: rgba(48, 63, 159, 0);
+}
+
+.btn-outline-drop:hover {
+    border-color: #d3d3d3;
+}
+
+.btn-outline-drop:focus,
+.btn-outline-drop.focus {
+    box-shadow: 0 0 0 0.2rem rgba(111, 85, 255, 0) !important;
+}
+
+.btn-outline-soc {
+    color: #1976D2;
+    background-color: transparent;
+    background-image: none;
+    border-color: #1976D2;
+}
+
+.btn-outline-soc:hover {
+    color: #fff;
+    background-color: #1976D2;
+    border-color: #1976D2;
+}
+
+.btn-outline-soc:focus,
+.btn-outline-soc.focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.border-socium {
+    border-color: rgba(95, 73, 217, 0.97) !important;
+}
+
+.btn-link-soc {
+    font-weight: 400;
+    color: rgba(95, 73, 217, 0.97);
+    background-color: transparent;
+}
+
+.btn-link-soc:hover {
+    color: rgba(78, 59, 177, 0.97);
+    text-decoration: underline;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btn-link-soc:focus,
+.btn-link.focus {
+    text-decoration: underline;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.btn-link-soc:disabled,
+.btn-link.disabled {
+    color: #65587d;
+}
+
+body {
+    background-color: #65587d;
+}
+
+btn-med {
+    width: 36px;
+    height: 36px;
+    overflow: hidden;
+    padding: 10px !important;
+
+}
+
+.red {
+    color: #D93A30;
+}
+
+.gr {
+    color: #00B56A;
+}
