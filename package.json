@@ -1,6 +1,6 @@
 {
   "name": "socium",
-  "version": "0.2.8",
+  "version": "0.3.0",
   "description": "social network example",
   "main": "app.js",
   "scripts": {
