@@ -19,9 +19,8 @@ var express        = require("express"),
     methodOverride = require("method-override"),
     Post           = require("./modules/post"),
     Comment        = require("./modules/comment");
-mongoose.connect("mongodb+srv://openSocDB:soc@rayovskycl-kz0kg.mongodb.net/socium", { //here you can connect your own db
-    useNewUrlParser: true
-});
+mongoose.connect("mongodb+srv://openSocDB:soc@rayovskycl-kz0kg.mongodb.net/socium" //here you can connect your own db
+);
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
