@@ -1,4 +1,5 @@
 //?db & "C:\Program Files\MongoDB\Server\4.0\bin\mongo.exe"
+//!delete this ugly function later
 function errCheck(err, callback) {
     if (err) {
         console.log(err);
@@ -6,7 +7,10 @@ function errCheck(err, callback) {
         return callback;
     }
 }
+
 console.log("Loading please wait...");
+
+
 //init
 var express        = require("express"),
     app            = express(),
@@ -25,8 +29,11 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-//schema setup
-//* routes
+
+//=================
+//*Main routes
+//================
+
 //index
 app.get("/", function (req, res) {
     res.redirect("/s/all");
@@ -94,8 +101,10 @@ app.delete("/s/all/:id", function (req, res) {
 });
 
 //======================
-//comments
+//*comments
 //=====================
+
+//new
 app.post("/s/all/:id/comments", function (req, res) {
     Post.findById(req.params.id, function(err, foundPost){
         if (err) {
