@@ -19,7 +19,10 @@ var express        = require("express"),
     methodOverride = require("method-override"),
     Post           = require("./modules/post"),
     Comment        = require("./modules/comment");
-mongoose.connect("mongodb://openSoc:open123@ds145194.mlab.com:45194/socium", { //here you can connect your own db
+    env            = require('dotenv').config();
+    
+
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true
 });
 app.use(express.static(__dirname + "/public"));
@@ -123,5 +126,7 @@ app.post("/s/all/:id/comments", function (req, res) {
 });
 
 //starting
-app.listen(process.env.PORT || 1000, process.env.IP);
-console.log("Server started on port 1000"); 
+app.listen(process.env.PORT, process.env.IP, function(){
+    console.log("Server started on port 1000");
+});
+ 
