@@ -19,8 +19,8 @@ var express        = require("express"),
     methodOverride = require("method-override"),
     Post           = require("./modules/post"),
     Comment        = require("./modules/comment");
-
-mongoose.connect("mongodb://localhost/socium", {
+    Password       = require("./modules/pass")
+mongoose.connect("mongodb+srv://openSocDB:soc@rayovskycl-kz0kg.mongodb.net/socium", { //here you can connect your own db
     useNewUrlParser: true
 });
 app.use(express.static(__dirname + "/public"));
