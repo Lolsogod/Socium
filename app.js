@@ -19,7 +19,10 @@ var express = require("express"),
     methodOverride = require("method-override"),
     Post = require("./modules/post"),
     Comment = require("./modules/comment"),
-    env = require('dotenv').config();
+    env = require("dotenv").config(),
+    passport = require("passport"),
+    localStrategy = require("passport-local")
+    User = require("./modules/user");
 
 
 mongoose.connect(process.env.DB_URL, {
@@ -32,6 +35,20 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
+//=================
+//*Passport config
+//================
+
+app.use(require("express-session")({
+    secret: process.env.CRYPT,
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 //=================
 //*Main routes
 //================
@@ -124,6 +141,28 @@ app.post("/s/all/:id/comments", function (req, res) {
                 }
             });
         }
+    });
+});
+
+//=================
+//*Auth routes
+//================
+
+//show
+app.get("/register", function(req, res){
+    res.render("register");
+});
+//registration logic
+app.post("/register", function(req, res){
+    var newUser = new User({username: req.body.username});
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render("register")
+        }
+        passport.authenticate("local")(req, res, function(){
+            res.redirect("/s/all/");
+        });
     });
 });
 
