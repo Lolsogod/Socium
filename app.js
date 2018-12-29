@@ -49,6 +49,10 @@ app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+app.use(function(req, res, next){
+    res.locals.curUser = req.user;
+    next();
+});
 //=================
 //*Main routes
 //================
@@ -173,7 +177,7 @@ app.get("/login", function(req, res){
 //login logic
 app.post("/login", passport.authenticate("local",{
     successRedirect: "/s/all",
-    failureRedirect: "/log"
+    failureRedirect: "/login"
 }), function(req, res){
 
 });
