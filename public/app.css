@@ -16,9 +16,8 @@ input {
 }
 
 @media screen and (max-width: 768px) {
-    .col-res{
-        padding-right: 0 !important;
-        padding-left: 0 !important;
+    .lmenu {
+        display: none;
     }
 }
 
