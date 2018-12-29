@@ -20,8 +20,17 @@ input {
         padding-right: 0 !important;
         padding-left: 0 !important;
     }
+    .card{
+        border-radius: 0 !important;
+        margin-bottom: 8px !important;
+    }
+    .no-mob{
+        display: none;
+    }
 }
-
+.card{
+    margin-bottom: 13px;
+}
 @media screen and (max-width: 992px) {
     .emp {
         display: none;
@@ -146,4 +155,7 @@ btn-med {
 
 .gr {
     color: #00B56A;
+}
+img{
+    border-radius: 0 !important;
 }
