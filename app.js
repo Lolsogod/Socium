@@ -74,7 +74,7 @@ app.get("/s/all/new", function (req, res) {
     res.render("new");
 });
 //create
-app.post("/s/all", function (req, res) {
+app.post("/s/all", isLoggedIn, function (req, res) {
     Post.create(req.body.Post, function (err, created) {
         errCheck(err, res.redirect("/s/all"));
     });
@@ -88,7 +88,7 @@ app.get("/s/all/:id/edit", function (req, res) {
     });
 });
 //update
-app.put("/s/all/:id", function (req, res) {
+app.put("/s/all/:id", isLoggedIn ,function (req, res) {
     Post.findByIdAndUpdate(req.params.id, req.body.Post, function (err, updatedPost) {
         if (err) {
             console.log(err);
@@ -111,7 +111,7 @@ app.get("/s/all/:id", function (req, res) {
     });
 });
 //delete
-app.delete("/s/all/:id", function (req, res) {
+app.delete("/s/all/:id", isLoggedIn, function (req, res) {
     Post.findByIdAndDelete(req.params.id, function (err) {
         if (err) {
             console.log(err);
@@ -126,7 +126,7 @@ app.delete("/s/all/:id", function (req, res) {
 //=====================
 
 //new
-app.post("/s/all/:id/comments", function (req, res) {
+app.post("/s/all/:id/comments", isLoggedIn, function (req, res) {
     Post.findById(req.params.id, function (err, foundPost) {
         if (err) {
             console.log(err);
@@ -148,7 +148,7 @@ app.post("/s/all/:id/comments", function (req, res) {
 //*Auth routes
 //================
 
-//show
+//show sing up form
 app.get("/register", function(req, res){
     res.render("register");
 });
@@ -165,6 +165,30 @@ app.post("/register", function(req, res){
         });
     });
 });
+
+//show
+app.get("/login", function(req, res){
+    res.render("login");
+});
+//login logic
+app.post("/login", passport.authenticate("local",{
+    successRedirect: "/s/all",
+    failureRedirect: "/log"
+}), function(req, res){
+
+});
+//logout
+app.get("/logout", function(req,res){
+    req.logOut();
+    res.redirect("/s/all");
+});
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 //starting
 app.listen(process.env.PORT, process.env.IP, function () {
