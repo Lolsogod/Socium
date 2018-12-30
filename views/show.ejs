@@ -84,7 +84,9 @@ function dif(date1, date2) {
                 </ul>
             <%});%>
                 <form action="/s/all/<%= post.id %>/comments" method="POST">
-                  <input type="text" class="mt-1 form-control" name="Comment[user]" placeholder="UserName...">
+                  <input type="hidden" name="Comment[user]" value="<%if(curUser){%>
+                                                                        <%=curUser.username%>
+                                                                    <%}%>">
                   <textarea class="mt-1 form-control nores" name="Comment[text]" placeholder="Text.." rows="3"></textarea>
                   <input type="submit" class="ml-2 mt-2 btn btn-socium float-right" value="Add">
                 </form>
