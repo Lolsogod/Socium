@@ -2,7 +2,6 @@
 console.log("Loading please wait...");
 
 //init
-//!delete this ugly function later
 const express = require("express"),
     app = express(),
     bodyParser = require('body-parser'),
@@ -14,6 +13,10 @@ const express = require("express"),
     passport = require("passport"),
     localStrategy = require("passport-local"),
     User = require("./models/user");
+//requiring routes
+const indexRoutes =require("./routes"),
+      allRoutes =require("./routes/all"),
+      commentsRoutes =require("./routes/comments");
 
 const errCheck = (err, callback) => {
     if (err) {
@@ -30,6 +33,7 @@ const isLoggedIn = (req, res, next) =>{
     res.redirect("/login");
 };
 
+//mongoDB config
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true
 });
@@ -40,10 +44,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-//=================
-//*Passport config
-//================
-
+//Passport config
 app.use(require("express-session")({
     secret: process.env.CRYPT,
     resave: false,
@@ -58,140 +59,11 @@ app.use((req, res, next) =>{
     res.locals.curUser = req.user;
     next();
 });
-//=================
-//*Main routes
-//================
 
-//index
-app.get("/", (req, res) =>{
-    res.redirect("/s/all");
-});
-
-app.get("/s/all", (req, res) =>{
-    Post.find({}, (err, posts) =>{
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("index", {
-                posts: posts
-            });
-        }
-    });
-});
-//new
-app.get("/s/all/new", (req, res) =>{
-    res.render("new");
-});
-//create
-app.post("/s/all", isLoggedIn, (req, res) =>{
-    Post.create(req.body.Post, (err, created) =>{
-        errCheck(err, res.redirect("/s/all"));
-    });
-});
-//edit
-app.get("/s/all/:id/edit", (req, res) =>{
-    Post.findById(req.params.id, (err, foundPost) =>{
-        errCheck(err, res.render("edit", {
-            post: foundPost
-        }));
-    });
-});
-//update
-app.put("/s/all/:id", isLoggedIn, (req, res) =>{
-    Post.findByIdAndUpdate(req.params.id, req.body.Post, (err, updatedPost) =>{
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect(req.params.id);
-        }
-    });
-});
-
-//show
-app.get("/s/all/:id", (req, res) =>{
-    Post.findById(req.params.id).populate("comments").exec((err, foundPost) =>{
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("show", {
-                post: foundPost
-            });
-        }
-    });
-});
-//delete
-app.delete("/s/all/:id", isLoggedIn, (req, res) =>{
-    Post.findByIdAndDelete(req.params.id, (err) =>{
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect("/s/all/");
-        }
-    });
-});
-
-//======================
-//*comments
-//=====================
-
-//new
-app.post("/s/all/:id/comments", isLoggedIn, (req, res) =>{
-    Post.findById(req.params.id, (err, foundPost) =>{
-        if (err) {
-            console.log(err);
-        } else {
-            Comment.create(req.body.Comment, (err, comment) =>{
-                if (err) {
-                    console.log(err);
-                } else {
-                    foundPost.comments.push(comment);
-                    foundPost.save();
-                    res.redirect(`/s/all/${foundPost._id}`);
-                }
-            });
-        }
-    });
-});
-
-//=================
-//*Auth routes
-//================
-
-//show sing up form
-app.get("/register", (req, res) =>{
-    res.render("register");
-});
-//registration logic
-app.post("/register", (req, res) =>{
-    const newUser = new User({username: req.body.username});
-    User.register(newUser, req.body.password, (err, user) =>{
-        if(err){
-            console.log(err);
-            return res.render("register");
-        }
-        passport.authenticate("local")(req, res, () =>{
-            res.redirect("/s/all/");
-        });
-    });
-});
-
-//show
-app.get("/login", (req, res) =>{
-    res.render("login");
-});
-//login logic
-app.post("/login", passport.authenticate("local",{
-    successRedirect: "/s/all",
-    failureRedirect: "/login"
-}), (req, res)=>{
-
-});
-//logout
-app.get("/logout", (req,res) =>{
-    req.logOut();
-    res.redirect("/s/all");
-});
-
+//routes
+app.use(indexRoutes);
+app.use("/s/all/", allRoutes);
+app.use("/s/all/:id/comments", commentsRoutes);
 
 
 //starting
