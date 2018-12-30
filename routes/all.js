@@ -21,18 +21,6 @@ app.get("/", (req, res) =>{
         }
     });
 });
-//show
-app.get("/:id", (req, res) =>{
-    Post.findById(req.params.id).populate("comments").exec((err, foundPost) =>{
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("show", {
-                post: foundPost
-            });
-        }
-    });
-});
 //new
 app.get("/new", (req, res) =>{
     res.render("new");
@@ -44,6 +32,18 @@ app.post("/", isLoggedIn, (req, res) =>{
             console.log(err);
         } else {
             res.redirect("/s/all");
+        }
+    });
+});
+//show
+app.get("/:id", (req, res) =>{
+    Post.findById(req.params.id).populate("comments").exec((err, foundPost) =>{
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("show", {
+                post: foundPost
+            });
         }
     });
 });
