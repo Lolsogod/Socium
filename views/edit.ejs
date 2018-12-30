@@ -1,6 +1,6 @@
 <% include partials/header %>
 <div class="col-md-3 "></div>
-<div class="col-md-6 ">
+<div class="col-res col-md-6 ">
   <!--edit form-->
   <div class="card">
     <div class="card-header">
@@ -10,9 +10,9 @@
       <form action="/s/all/<%=post._id%>?_method=PUT" method="POST">
         <input type="text" class="mt-1 form-control" name="Post[title]" value="<%=post.title %>">
         <input type="text" class="mt-1 form-control" name="Post[img]" value="<%=post.img %>" required>
-        <textarea class="mt-1 form-control nores" name="Post[body]" rows="3"><%=post.body%></textarea>
-        <input type="submit" class="ml-2 mt-2 btn btn-socium float-right">
-        <a href="/s/all" class="mt-2 btn btn-outline-soc float-right">Cancel</a>
+        <textarea class="mt-1 form-control" name="Post[body]" rows="3"><%=post.body%></textarea>
+        <input type="submit" class="ml-2 mt-2 btn btn-primary float-right">
+        <a href="/s/all" class="mt-2 btn btn-outline-primary float-right">Cancel</a>
     </div>
   </div>
 </div>

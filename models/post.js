@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-var postSchema = {
+const postSchema = {
     time: {
         type: Date,
         default: Date.now
@@ -10,8 +10,8 @@ var postSchema = {
     body: String,
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Comment"
+        ref: 'Comment'
     }]
 };
 
-module.exports = mongoose.model("post", postSchema);
+module.exports = mongoose.model('post', postSchema);

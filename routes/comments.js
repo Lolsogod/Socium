@@ -1,22 +1,23 @@
-const express = require("express"),
-      Post = require("../models/post"),
+'use strict';
+const express = require('express'),
+      Post = require('../models/post'),
       app = express.Router({mergeParams: true}),
-      Comment = require("../models/comment");
+      Comm = require('../models/comment');
 
 const isLoggedIn = (req, res, next) =>{
     if(req.isAuthenticated()){
         return next();
     }
-    res.redirect("/login");
+    res.redirect('/login');
 };
 
 //new
-app.post("/", isLoggedIn, (req, res) =>{
+app.post('/', isLoggedIn, (req, res) =>{
     Post.findById(req.params.id, (err, foundPost) =>{
         if (err) {
             console.log(err);
         } else {
-            Comment.create(req.body.Comment, (err, comment) =>{
+            Comm.create(req.body.comment, (err, comment) =>{
                 if (err) {
                     console.log(err);
                 } else {

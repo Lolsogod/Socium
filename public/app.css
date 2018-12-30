@@ -1,84 +1,97 @@
-#wc-ico {
-    font-size: 80px;
+@media screen and (max-width: 768px) {
+
+    .col-res {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .card {
+        border-radius: 0;
+        margin-bottom: 8px !important;
+    }
+
+    .no-mob {
+        display: none;
+    }
+
 }
 
 body {
-    background-color: #DAE0E6 !important;
+    background-color: #DAE0E6;
 }
 
-.nores {
+img {
+    border-radius: 0;
+}
+
+textarea {
     resize: none;
 }
 
-.btn,
-input {
-    border-radius: 4px !important;
+input:focus {
+    border-color: #1867b6 !important;
+    box-shadow: 0 0 0 0.2rem rgba(22, 104, 184, 0.4) !important;
 }
 
-@media screen and (max-width: 768px) {
-    .col-res{
-        padding-right: 0 !important;
-        padding-left: 0 !important;
-    }
-    .card{
-        border-radius: 0 !important;
-        margin-bottom: 8px !important;
-    }
-    .no-mob{
-        display: none;
-    }
-}
-.card{
-    margin-bottom: 13px;
-}
-@media screen and (max-width: 992px) {
-    .emp {
-        display: none;
-    }
+/*navbar*/
+
+.nav-link {
+    color: rgba(0, 0, 0, 0.8) !important;
 }
 
-.soc {
+.nav-link:hover {
+    color: rgba(0, 0, 0, 1) !important;
+}
+
+.text-primary {
     color: #1976D2 !important;
 }
 
+/*cards*/
+
 .bg-grad {
-    background-image: linear-gradient(to left, #1b77d3, #1560aa) !important;
+    background-image: linear-gradient(to left, #1b77d3, #1560aa);
 }
 
-.nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
-    background-color: #1976D2 !important;
+.card {
+    margin-bottom: 13px;
 }
 
-.nav-link:not(.active) {
-    color: #343A40 !important;
-}
+/*buttons*/
 
-.btn-socium {
-    color: #fff;
+.btn-primary,
+.btn-outline-primary:hover {
     background-color: #1976D2;
     border-color: #1668B8;
 }
 
-.btn-socium:hover {
-    color: #fff;
-    background-color: #1668B8;
-    border-color: #1668B8;
+.btn-primary:hover {
+    background-color: #186bbe;
+    border-color: #1560ac;
 }
 
-.btn-socium:focus,
-.btn-socium.focus,
-input:focus {
-    border-color: #1668B8;
-    box-shadow: 0 0 0 0.2rem rgba(22, 104, 184, 0.51) !important;
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+    background-color: #1867b6 !important;
+    border-color: #1868b8 !important;
+    box-shadow: 0 0 0 0.2rem rgba(22, 104, 184, 0.4) !important;
 }
 
+.btn-outline-primary {
+    border-color: white !important;
+    background-color: transparent;
+    background-image: none;
+    border-color: #1976D2;
+    color: #1976D2;
+}
 
 .btn-outline-drop {
-    color: black;
     background-color: transparent;
     background-image: none;
     border-color: rgba(48, 63, 159, 0);
+    color: black;
 }
 
 .btn-outline-drop:hover {
@@ -90,64 +103,7 @@ input:focus {
     box-shadow: 0 0 0 0.2rem rgba(111, 85, 255, 0) !important;
 }
 
-.btn-outline-soc {
-    color: #1976D2;
-    background-color: transparent;
-    background-image: none;
-    border-color: #1976D2;
-}
-
-.btn-outline-soc:hover {
-    color: #fff;
-    background-color: #1976D2;
-    border-color: #1976D2;
-}
-
-.btn-outline-soc:focus,
-.btn-outline-soc.focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-}
-
-.border-socium {
-    border-color: rgba(95, 73, 217, 0.97) !important;
-}
-
-.btn-link-soc {
-    font-weight: 400;
-    color: rgba(95, 73, 217, 0.97);
-    background-color: transparent;
-}
-
-.btn-link-soc:hover {
-    color: rgba(78, 59, 177, 0.97);
-    text-decoration: underline;
-    background-color: transparent;
-    border-color: transparent;
-}
-
-.btn-link-soc:focus,
-.btn-link.focus {
-    text-decoration: underline;
-    border-color: transparent;
-    box-shadow: none;
-}
-
-.btn-link-soc:disabled,
-.btn-link.disabled {
-    color: #65587d;
-}
-
-body {
-    background-color: #65587d;
-}
-
-btn-med {
-    width: 36px;
-    height: 36px;
-    overflow: hidden;
-    padding: 10px !important;
-
-}
+/*default colors*/
 
 .red {
     color: #D93A30;
@@ -156,6 +112,9 @@ btn-med {
 .gr {
     color: #00B56A;
 }
-img{
-    border-radius: 0 !important;
+
+/*unical elements*/
+
+#wc-ico {
+    font-size: 80px;
 }

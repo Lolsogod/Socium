@@ -1,6 +1,6 @@
-var mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-var commentSchema = {
+const commentSchema = {
     /*time: {
         type: Date,
         default: Date.now
@@ -9,4 +9,4 @@ var commentSchema = {
     user: String,
 };
 
-module.exports = mongoose.model("Comment", commentSchema);
+module.exports = mongoose.model('Comment', commentSchema);

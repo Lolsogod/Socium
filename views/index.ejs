@@ -70,9 +70,9 @@ function dif(date1, date2) {
         <img src="<%= post.img %>" onerror="this.style.display='none'" class="card-img">
         <div class="card-footer ">
             <div class="text-center">
-                <a href="#" class="btn btn-med btn-outline-danger border-0 float-right"><i class="far fa-heart"></i></a>
-                <a href="#" class="btn btn-med btn-outline-info border-0 float-right"><i class="fas fa-bullhorn"></i></a>
-                <a href="/s/all/<%= post._id %>" class="btn btn-med btn-outline-info border-0 float-right"><i class="far fa-comments"></i>
+                <a href="#" class="btn btn-outline-danger border-0 float-right"><i class="far fa-heart"></i></a>
+                <a href="#" class="btn btn-outline-info border-0 float-right"><i class="fas fa-bullhorn"></i></a>
+                <a href="/s/all/<%= post._id %>" class="btn btn-outline-info border-0 float-right"><i class="far fa-comments"></i>
                 <%if(post.comments.length != 0){%>
                     <%=post.comments.length%>
                 <%}%></a>
@@ -83,6 +83,6 @@ function dif(date1, date2) {
     <% });%>
 </div>
 <div class="col-md-2 ">
-    <a href="/s/all/new" class="btn btn-socium position-fixed">Create new post</a>
+    <a href="/s/all/new" class="btn btn-primary position-fixed">Create new post</a>
 </div>
 <% include partials/footer %>
