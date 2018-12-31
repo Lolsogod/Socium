@@ -23,7 +23,7 @@ app.get('/', (req, res) =>{
     });
 });
 //new
-app.get('/new', (req, res) =>{
+app.get('/new', isLoggedIn, (req, res) =>{
     res.render('new');
 });
 //create
@@ -49,7 +49,7 @@ app.get('/:id', (req, res) =>{
     });
 });
 //edit
-app.get('/:id/edit', (req, res) =>{
+app.get('/:id/edit', isLoggedIn, (req, res) =>{
     Post.findById(req.params.id, (err, foundPost) =>{
         if (err) {
             console.log(err);

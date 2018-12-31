@@ -21,6 +21,9 @@ app.post('/', isLoggedIn, (req, res) =>{
                 if (err) {
                     console.log(err);
                 } else {
+                    comment.user.id = req.user._id;
+                    comment.user.username = req.user.username;
+                    comment.save();
                     foundPost.comments.push(comment);
                     foundPost.save();
                     res.redirect(`/s/all/${foundPost._id}`);

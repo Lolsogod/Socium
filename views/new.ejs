@@ -8,6 +8,8 @@
     </div>
     <div class="card-body">
       <form action="/s/all" method="POST">
+        <input type="hidden"  name="Post[user.username]" value="<%=curUser.username%>">
+        <input type="hidden"  name="Post[user.id]" value="<%=curUser._id%>">
         <input type="text" class="mt-1 form-control" name="Post[title]" placeholder="Title...">
         <input type="text" class="mt-1 form-control" name="Post[img]" placeholder="Image url..." required>
         <textarea class="mt-1 form-control" name="Post[body]" placeholder="Text.." rows="3"></textarea>
