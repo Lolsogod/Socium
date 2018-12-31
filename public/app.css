@@ -1,3 +1,8 @@
+:root{
+    --blue: #1976D2;
+    --blue-1: #186bbe;
+    --blue-2: #1767b6;
+}
 @media screen and (max-width: 768px) {
 
     .col-res {
@@ -44,7 +49,7 @@ input:focus {
 }
 
 .text-primary {
-    color: #1976D2 !important;
+    color: var(--blue) !important;
 }
 
 /*cards*/
@@ -61,30 +66,27 @@ input:focus {
 
 .btn-primary,
 .btn-outline-primary:hover {
-    background-color: #1976D2;
-    border-color: #1668B8;
+    background-color: var(--blue);
+    border: 0;
 }
 
 .btn-primary:hover {
-    background-color: #186bbe;
-    border-color: #1560ac;
+    background-color: var(--blue-1);
 }
 
 .btn-primary:focus,
 .btn-primary.focus,
 .btn-outline-primary:focus,
 .btn-outline-primary.focus {
-    background-color: #1867b6 !important;
-    border-color: #1868b8 !important;
+    background-color: var(--blue-2) !important;
+    border-color: var(--blue-1) !important;
     box-shadow: 0 0 0 0.2rem rgba(22, 104, 184, 0.4) !important;
 }
 
 .btn-outline-primary {
-    border-color: white !important;
+    border: 0;
     background-color: transparent;
-    background-image: none;
-    border-color: #1976D2;
-    color: #1976D2;
+    color: var(--blue);
 }
 
 .btn-outline-drop {
