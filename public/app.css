@@ -2,6 +2,7 @@
     --blue: #1976D2;
     --blue-1: #186bbe;
     --blue-2: #1767b6;
+    --red: #D93A30;
 }
 @media screen and (max-width: 768px) {
 
@@ -26,7 +27,7 @@ body {
 }
 
 img {
-    border-radius: 0;
+    border-radius: 0 !important;
 }
 
 textarea {
@@ -60,7 +61,13 @@ input:focus {
 
 .card {
     margin-bottom: 13px;
+    position: relative;
 }
+
+.card-footer{
+    border-top-color: #F0F1F2;
+    padding: 1rem;
+} 
 
 /*buttons*/
 
@@ -106,9 +113,15 @@ input:focus {
 }
 
 /*default colors*/
+.bg-blue{
+    background-color: var(--blue);
+}
 
 .red {
-    color: #D93A30;
+    color: var(--red);
+}
+.bg-red{
+    background-color: var(--red);
 }
 
 .gr {
@@ -116,6 +129,45 @@ input:focus {
 }
 
 /*unical elements*/
+.media{
+    height: 60px;
+    
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.ico{
+    color: white;
+    margin: 28%;
+    font-size: 15px;
+}
+.fa-heart{
+    color: white;
+    margin: 31%;
+    font-size: 18px;
+}
+.btn-med{
+    margin: 10px  4px 0 0;
+    border-radius: 100%;
+    border: 3px solid #F0F1F2;
+    height: 40px;
+    width: 40px;
+}
+.btn-med:hover{
+    background-color: var(--blue-1);
+}
+#like{
+    margin-top: 3px;
+    margin-right: 10px;
+    height: 50px;
+    width: 50px;
+}
+#comment{
+    
+}
+#share{
+
+}
 
 #wc-ico {
     font-size: 80px;
