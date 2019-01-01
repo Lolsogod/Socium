@@ -112,7 +112,15 @@ input:focus {
     box-shadow: 0 0 0 0.2rem rgba(111, 85, 255, 0) !important;
 }
 
+.btn-bot{
+    color: black;
+    opacity: 0.9;
+}
+.btn-bot:focus{
+    opacity: 1;
+}
 /*default colors*/
+
 .bg-blue{
     background-color: var(--blue);
 }
