@@ -38,6 +38,7 @@ app.post('/', isLoggedIn, (req, res) =>{
 });
 //show
 app.get('/:id', (req, res) =>{
+    if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
     Post.findById(req.params.id).populate('comments').exec((err, foundPost) =>{
         if (err) {
             console.log(err);
@@ -47,6 +48,7 @@ app.get('/:id', (req, res) =>{
             });
         }
     });
+}
 });
 //edit
 app.get('/:id/edit', isLoggedIn, (req, res) =>{

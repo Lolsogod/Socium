@@ -128,7 +128,8 @@ input:focus {
     color: #00B56A;
 }
 
-/*unical elements*/
+/*media buttons*/
+
 .med{
     height: 60px;
     display: flex;
@@ -143,7 +144,7 @@ input:focus {
 }
 .fa-heart{
     color: white;
-    margin: 31%;
+    margin: 32%;
     font-size: 18px;
 }
 .btn-med{
@@ -152,9 +153,13 @@ input:focus {
     border: 3px solid #F0F1F2;
     height: 40px;
     width: 40px;
+    transition: border-color 0.2s;
 }
 .btn-med:hover{
     background-color: var(--blue-1);
+}
+.btn-med:focus{
+    border-color:  #99BBDB;
 }
 #like{
     margin-top: 3px;
@@ -162,12 +167,12 @@ input:focus {
     height: 50px;
     width: 50px;
 }
-#comment{
-    
-}
-#share{
 
+#like:focus{
+    border-color:  #E5939C;
 }
+
+/*unical elements*/
 
 #wc-ico {
     font-size: 80px;
