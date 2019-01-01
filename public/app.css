@@ -129,9 +129,9 @@ input:focus {
 }
 
 /*unical elements*/
-.media{
+.med{
     height: 60px;
-    
+    display: flex;
     position: absolute;
     bottom: 0;
     right: 0;

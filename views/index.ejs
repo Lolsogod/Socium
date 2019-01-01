@@ -69,12 +69,10 @@ function dif(date1, date2) {
         </div>
         <img src="<%= post.img %>" onerror="this.style.display='none'" class="card-img">
         <div class="card-footer ">
-            <div class="media">
-                <a href="/s/all/<%= post._id %>" id="comment" class="bg-blue btn-med"><i class="ico fas fa-comment"></i></a>
-                <a href="#" id="share" class="bg-blue btn-med"><i class="ico fas fa-share"></i>
-                <%if(post.comments.length != 0){%>
-                    <%=post.comments.length%>
-                <%}%></a>
+            <div class="med">
+                <a href="/s/all/<%= post._id %>" id="comment" class="bg-blue btn-med" 
+                data-toggle="tooltip" data-placement="top" title="<%=post.comments.length%>"><i class="ico fas fa-comment"></i></a>
+                <a href="#" id="share" class="bg-blue btn-med"><i class="ico fas fa-share"></i></a>
                 <a href="#" id="like" class="bg-danger btn-med"><i class="fas fa-heart"></i></a>
                 <!--media-->
             </div>
