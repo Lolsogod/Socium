@@ -48,7 +48,7 @@ function dif(date1, date2) {
     <% posts.reverse().forEach(function(post){%>
     <div class="card bg-light">
         <div class="card-header">
-            <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" alt="img" class=" border-socium rounded-circle border-dark "
+            <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" alt="avatar" class=" border-socium rounded-circle border-dark "
                 height="32">
             <b class="mt-0 text-dark"> <%=post.user.username%></b>
             <span class="text-secondary float-right">
@@ -67,7 +67,9 @@ function dif(date1, date2) {
                 <%}
             }%>
         </div>
-        <img src="<%= post.img %>" onerror="this.style.display='none'" class="card-img" alt="Post image">
+        <%if(post.img){%>
+            <img src="<%= post.img %>" class="card-img" alt="Failed to load post img">
+        <%}%>
         <div class="card-footer ">
             <div class="med">
                 <a href="/s/all/<%= post._id %>" id="comment" class="bg-blue btn-med" 

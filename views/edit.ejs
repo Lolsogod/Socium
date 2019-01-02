@@ -9,7 +9,7 @@
     <div class="card-body">
       <form action="/s/all/<%=post._id%>?_method=PUT" method="POST">
         <input type="text" class="mt-1 form-control" name="Post[title]" value="<%=post.title %>">
-        <input type="text" class="mt-1 form-control" name="Post[img]" value="<%=post.img %>" required>
+        <input type="text" class="mt-1 form-control" name="Post[img]" value="<%=post.img %>">
         <textarea class="mt-1 form-control" name="Post[body]" rows="3"><%=post.body%></textarea>
         <input type="submit" class="ml-2 mt-2 btn btn-primary float-right">
         <a href="/s/all" class="mt-2 btn btn-outline-primary float-right">Cancel</a>

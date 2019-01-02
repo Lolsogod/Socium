@@ -189,7 +189,10 @@ input:focus {
 }
 
 /*unical elements*/
-
+#log-head{
+    color: white;
+    background-image: linear-gradient(to left, #1b77d3, #1560aa);
+}
 #wc-ico {
     font-size: 80px;
 }
