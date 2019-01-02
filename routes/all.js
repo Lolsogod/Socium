@@ -9,7 +9,23 @@ const isLoggedIn = (req, res, next) =>{
     }
     res.redirect('/login');
 };
-
+const ownership = (req, res, next) =>{
+    if(req.isAuthenticated()){
+        Post.findById(req.params.id, (err, foundPost) =>{
+            if (err) {
+                res.redirect('back');
+            } else {
+                if(foundPost.user.id.equals(req.user._id)){
+                    next();
+                } else {
+                    res.redirect('back');
+                }
+            }
+        });
+    } else {
+        res.redirect('back');
+    }
+};
 //index
 app.get('/', (req, res) =>{
     Post.find({}, (err, posts) =>{
@@ -51,15 +67,10 @@ app.get('/:id', (req, res) =>{
 }
 });
 //edit
-app.get('/:id/edit', isLoggedIn, (req, res) =>{
+app.get('/:id/edit', ownership, (req, res) =>{
     Post.findById(req.params.id, (err, foundPost) =>{
-        if (err) {
-            console.log(err);
-        } else {
-            res.render('edit', {
-            post: foundPost
-        });}
-    });
+        res.render('edit', {post: foundPost});
+    });     
 });
 //update
 app.put('/:id', isLoggedIn, (req, res) =>{
@@ -73,13 +84,9 @@ app.put('/:id', isLoggedIn, (req, res) =>{
 });
 
 //destroy
-app.delete('/:id', isLoggedIn, (req, res) =>{
-    Post.findByIdAndDelete(req.params.id, (err) =>{
-        if (err) {
-            console.log(err);
-        } else {
-            res.redirect('/s/all/');
-        }
+app.delete('/:id', ownership, (req, res) =>{
+    Post.findByIdAndDelete(req.params.id, (/*err*/) =>{
+        res.redirect('/s/all/');
     });
 });
 

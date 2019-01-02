@@ -40,7 +40,7 @@ app.post('/login', passport.authenticate('local',{
 //logout
 app.get('/logout', (req,res) =>{
     req.logOut();
-    res.redirect('/s/all');
+    res.redirect('back');
 });
 
 module.exports = app;
