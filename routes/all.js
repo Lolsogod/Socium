@@ -9,7 +9,7 @@ const isLoggedIn = (req, res, next) =>{
     }
     res.redirect('/login');
 };
-const ownership = (req, res, next) =>{
+const isOwner = (req, res, next) =>{
     if(req.isAuthenticated()){
         Post.findById(req.params.id, (err, foundPost) =>{
             if (err) {
@@ -67,13 +67,13 @@ app.get('/:id', (req, res) =>{
 }
 });
 //edit
-app.get('/:id/edit', ownership, (req, res) =>{
+app.get('/:id/edit', isOwner, (req, res) =>{
     Post.findById(req.params.id, (err, foundPost) =>{
         res.render('edit', {post: foundPost});
     });     
 });
 //update
-app.put('/:id', isLoggedIn, (req, res) =>{
+app.put('/:id', isOwner, (req, res) =>{
     Post.findByIdAndUpdate(req.params.id, req.body.Post, (err/*, updatedPost*/) =>{
         if (err) {
             console.log(err);
@@ -84,7 +84,7 @@ app.put('/:id', isLoggedIn, (req, res) =>{
 });
 
 //destroy
-app.delete('/:id', ownership, (req, res) =>{
+app.delete('/:id', isOwner, (req, res) =>{
     Post.findByIdAndDelete(req.params.id, (/*err*/) =>{
         res.redirect('/s/all/');
     });

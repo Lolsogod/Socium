@@ -42,6 +42,7 @@ function dif(date1, date2) {
         <div class="card-body">
             <h5 class="card-title text-dark">
                 <%= post.title %>
+                <%if(curUser && post.user.id.equals(curUser._id)){%>
                 <div class="dropdown float-right">
                     <button class="btn btn-outline-drop" type="button" id="dropdownMenuButton"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,6 +56,7 @@ function dif(date1, date2) {
                         </form>
                     </div>
                 </div>
+                <%}%>
             </h5>
             <%=post.body%>
         </div>
@@ -82,10 +84,14 @@ function dif(date1, date2) {
                     </li>
                 </ul>
             <%});%>
+            <%if(curUser){%>
                 <form action="/s/all/<%= post.id %>/comments" method="POST">
                   <textarea class="mt-1 form-control" name="comment[text]" placeholder="Text.." rows="3"></textarea>
                   <input type="submit" class="ml-2 mt-2 btn btn-primary float-right" value="Add">
                 </form>
+            <%} else {%>
+            <h6 class="text-muted">You must <a href="/login">Log in</a> to leave comments</h6>
+            <%}%>
             </div>
         </div>
         <br class="no-mob">
