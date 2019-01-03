@@ -23,6 +23,10 @@
         display: none;
     }
 
+    #form-head{
+        border-radius: 0;
+    }
+
 }
 
 body {
@@ -77,6 +81,11 @@ button:focus{
 .card-header{
     background-color: var(--card-1);
     border-bottom: 0;
+}
+
+#form-head{
+    color: white;
+    background-image: linear-gradient(to left, #1b77d3, #1560aa);
 }
 
 /*buttons*/
@@ -210,10 +219,10 @@ button:focus{
 
 /*unical elements*/
 
-#log-head{
-    color: white;
-    background-image: linear-gradient(to left, #1b77d3, #1560aa);
+.user-name::first-letter{
+    text-transform: capitalize;
 }
+
 #wc-ico {
     font-size: 80px;
 }

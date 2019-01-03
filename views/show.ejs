@@ -69,8 +69,7 @@ function dif(date1, date2) {
             </div>
             <!--comments section-->
             <h6 class="mt-3">Comments</h6>
-            <%
-            post.comments.forEach(function(comment){%>
+            <%post.comments.forEach(function(comment){%>
                 <ul class="list-unstyled ml-3">
                     <li class="media">
                         <figure class="figure mt-1 mr-2">
@@ -79,10 +78,12 @@ function dif(date1, date2) {
                         </figure>
                         <div class="media-body">
                             <h6 class="mt-0"><%=comment.user.username%>
+                            <%if(curUser && comment.user.id.equals(curUser._id)){%>
                             <form action="/s/all/<%=post.id%>/comments/<%=comment.id%>?_method=DELETE" 
                             method="POST" style="display: inline">
                                 <button class="cl float-right" ><i class="fas fa-trash"></i></button>
-                            </form></h6>
+                            </form>
+                            <%}%></h6>
                             <%=comment.text%>
                             
                         </div>
@@ -95,7 +96,7 @@ function dif(date1, date2) {
                   <input type="submit" class="ml-2 mt-2 btn btn-primary float-right" value="Add">
                 </form>
             <%} else {%>
-            <h6 class="text-muted">You must <a href="/login">Log in</a> to leave comments</h6>
+            <h6 class="text-muted">You must <a href="/register">register</a> or <a href="/login">log in</a> to leave comments</h6>
             <%}%>
             </div>
         </div>

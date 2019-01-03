@@ -59,6 +59,9 @@ app.use(indexRoutes);
 app.use('/s/all/', allRoutes);
 app.use('/s/all/:id/comments', commentsRoutes);
 
+app.get('*', function(req, res){
+    res.render('err');
+  });
 
 //starting
 app.listen(process.env.PORT, process.env.IP, () => {

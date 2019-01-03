@@ -2,15 +2,16 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <meta name="theme-color" content="white">
     <meta charset="UTF-8">
     <title>Socium</title>
     <link rel="icon" type="image/png" href="https://i.imgur.com/ZqUvMsf.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-        crossorigin="anonymous">
+        crossorigin="anonymous" charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
-        crossorigin="anonymous">
+        crossorigin="anonymous" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/app.css">
 </head>
 
@@ -44,7 +45,7 @@
                         <li class="nav-item"><a href="/login" class="nav-link soc ">Log in</a></li>
                         <li class="nav-item"><a href="/register" class="nav-link soc ">Sign up</a></li>
                     <%}else{%>
-                        <li class="nav-item"><a href="#" class="nav-link soc "><%= curUser.username %></a></li>
+                        <li class="nav-item"><a href="#" class="nav-link soc user-name"><%= curUser.username %></a></li>
                         <li class="nav-item"><a href="/logout" class="nav-link soc ">Log out</a></li>
                     <%}%>
                 </ul>

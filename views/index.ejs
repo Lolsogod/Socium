@@ -26,7 +26,11 @@ function dif(date1, date2) {
     var years = [Math.floor(days % 365), " year"]
     return ret(years) + " " + ret(months) + " " + ret(days) +
         " " + ret(hours) + " " + ret(minutes) + " " + ret(seconds)
-}%>
+}
+function checkIMG(url) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+}
+ %>
 <div class="col-res col-md-10 ">
     <%if(!curUser){%>
     <div class="card text-white border-0 bg-grad ">
@@ -34,7 +38,7 @@ function dif(date1, date2) {
             <div class="row">
                 <div class="col-10 ">
                     <h3 class="font-weight-light">Welcome to socium!</h3>
-                    <h6 class="font-weight-light">Log-in or Create a new accaunt!</h6>
+                    <h6 class="font-weight-light">Log-in or Create a new account!</h6>
                     <button type="button" class="btn btn-outline-light btn-sm mt-1" onclick="location.href = '/register'">Get started!</button>
                 </div>
                 <div class="col-2 ">
@@ -64,7 +68,9 @@ function dif(date1, date2) {
                 <%=post.body%>
                 <%}%>
         </div>
+        <%if(checkIMG(post.img)){%>
             <img onload="check(this)" id="post-img" src="<%= post.img %>" class="card-img" alt="Failed to load post img">
+        <%}%>
         <div class="card-footer ">
             <div class="med">
                 <a href="/s/all/<%= post._id %>" id="comment" class="bg-blue btn-med" 

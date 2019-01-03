@@ -3,14 +3,17 @@
 <div class="col-res col-md-6 ">
   <!--edit form-->
   <div class="card">
-    <div class="card-header">
-      <h4>Edit Post</h4>
+    <div id="form-head" class="card-header">
+      <h4>Edit a Post</h4>
     </div>
     <div class="card-body">
       <form action="/s/all/<%=post._id%>?_method=PUT" method="POST">
-        <input type="text" class="mt-1 form-control" name="Post[title]" value="<%=post.title %>">
-        <input type="text" class="mt-1 form-control" name="Post[img]" value="<%=post.img %>">
-        <textarea class="mt-1 form-control" name="Post[body]" rows="3"><%=post.body%></textarea>
+        <h6>Title</h6>
+        <input type="text" class="mt-1 mb-1 form-control" name="Post[title]" value="<%=post.title %>">
+        <h6>Image</h6>
+        <input type="url" class="mt-1 mb-1 form-control" name="Post[img]" value="<%=post.img %>">
+        <h6>Text</h6>
+        <textarea class="mt-1 mb-1 form-control" name="Post[body]" rows="3"><%=post.body%></textarea>
         <input type="submit" class="ml-2 mt-2 btn btn-primary float-right">
         <a href="/s/all" class="mt-2 btn btn-outline-primary float-right">Cancel</a>
     </div>

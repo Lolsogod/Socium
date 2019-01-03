@@ -11,6 +11,24 @@ const isLoggedIn = (req, res, next) =>{
     res.redirect('/login');
 };
 
+const isCommentator = (req, res, next) =>{
+    if(req.isAuthenticated()){
+        Comm.findById(req.params.coId, (err, foundComment) =>{
+            if (err) {
+                res.redirect('back');
+            } else {
+                if(foundComment.user.id.equals(req.user._id)){
+                    next();
+                } else {
+                    res.redirect('back');
+                }
+            }
+        });
+    } else {
+        res.redirect('back');
+    }
+};
+
 //new
 app.post('/', isLoggedIn, (req, res) =>{
     Post.findById(req.params.id, (err, foundPost) =>{
@@ -33,7 +51,7 @@ app.post('/', isLoggedIn, (req, res) =>{
     });
 });
 //destroy
-app.delete('/:coId', isLoggedIn, (req, res) =>{
+app.delete('/:coId', isCommentator, (req, res) =>{
     Comm.findByIdAndDelete(req.params.coId, (err) =>{
         if(err){
             console.log(err);

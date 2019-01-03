@@ -3,16 +3,19 @@
 <div class="col-res col-md-6 ">
   <!--new post form-->
   <div class="card">
-    <div class="card-header">
-      <h4>Create new post</h4>
+    <div id="form-head" class="card-header">
+      <h4>Create a new post</h4>
     </div>
     <div class="card-body">
       <form action="/s/all" method="POST">
         <input type="hidden"  name="Post[user.username]" value="<%=curUser.username%>">
         <input type="hidden"  name="Post[user.id]" value="<%=curUser._id%>">
-        <input type="text" class="mt-1 form-control" name="Post[title]" placeholder="Title..." required>
-        <input type="text" class="mt-1 form-control" name="Post[img]" placeholder="Image url...">
-        <textarea class="mt-1 form-control" name="Post[body]" placeholder="Text.." rows="3"></textarea>
+        <h6>Title</h6>
+        <input type="text" class="mt-1 mb-1 form-control" name="Post[title]" placeholder="Title..." required>
+        <h6>Image</h6>
+        <input type="url" class="mt-1 mb-1 form-control" name="Post[img]" placeholder="Image url...">
+        <h6>Text</h6>
+        <textarea class="mt-1 mb-1 form-control" name="Post[body]" placeholder="Text.." rows="3"></textarea>
         <input type="submit" class="ml-2 mt-2 btn btn-primary float-right">
         <a href="/s/all" class="mt-2 btn btn-outline-primary float-right">Cancel</a>
       </form>
