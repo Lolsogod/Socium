@@ -26,11 +26,7 @@ function dif(date1, date2) {
     var years = [Math.floor(days % 365), " year"]
     return ret(years) + " " + ret(months) + " " + ret(days) +
         " " + ret(hours) + " " + ret(minutes) + " " + ret(seconds)
-}
-function checkIMG(url) {
-    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-}
- %>
+}%>
 <div class="col-res col-md-10 ">
     <%if(!curUser){%>
     <div class="card text-white border-0 bg-grad ">
