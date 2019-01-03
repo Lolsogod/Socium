@@ -1,31 +1,9 @@
 'use strict';
 const express = require('express'),
       Post = require('../models/post'),
+      mw = require('../middleware'),
       app = express.Router();
 
-const isLoggedIn = (req, res, next) =>{
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect('/login');
-};
-const isOwner = (req, res, next) =>{
-    if(req.isAuthenticated()){
-        Post.findById(req.params.id, (err, foundPost) =>{
-            if (err) {
-                res.redirect('back');
-            } else {
-                if(foundPost.user.id.equals(req.user._id)){
-                    next();
-                } else {
-                    res.redirect('back');
-                }
-            }
-        });
-    } else {
-        res.redirect('back');
-    }
-};
 //index
 app.get('/', (req, res) =>{
     Post.find({}, (err, posts) =>{
@@ -39,11 +17,11 @@ app.get('/', (req, res) =>{
     });
 });
 //new
-app.get('/new', isLoggedIn, (req, res) =>{
+app.get('/new', mw.isLoggedIn, (req, res) =>{
     res.render('new');
 });
 //create
-app.post('/', isLoggedIn, (req, res) =>{
+app.post('/', mw.isLoggedIn, (req, res) =>{
     Post.create(req.body.Post, (err/*,createdPost*/) =>{
         if (err) {
             console.log(err);
@@ -67,13 +45,13 @@ app.get('/:id', (req, res) =>{
 }
 });
 //edit
-app.get('/:id/edit', isOwner, (req, res) =>{
+app.get('/:id/edit', mw.isOwner, (req, res) =>{
     Post.findById(req.params.id, (err, foundPost) =>{
         res.render('edit', {post: foundPost});
     });     
 });
 //update
-app.put('/:id', isOwner, (req, res) =>{
+app.put('/:id', mw.isOwner, (req, res) =>{
     Post.findByIdAndUpdate(req.params.id, req.body.Post, (err/*, updatedPost*/) =>{
         if (err) {
             console.log(err);
@@ -84,7 +62,7 @@ app.put('/:id', isOwner, (req, res) =>{
 });
 
 //destroy
-app.delete('/:id', isOwner, (req, res) =>{
+app.delete('/:id', mw.isOwner, (req, res) =>{
     Post.findByIdAndDelete(req.params.id, (/*err*/) =>{
         res.redirect('/s/all/');
     });

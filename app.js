@@ -20,13 +20,6 @@ const indexRoutes =require('./routes'),
 
 require('dotenv').config();
 
-/*const isLoggedIn = (req, res, next) =>{
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-};*/
-
 //mongoDB config
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true
