@@ -3,8 +3,10 @@
     --blue-1: #186bbe;
     --blue-2: #1767b6;
     --red: #D93A30;
+    --red-1: #c9382e;
     --card-1: hsl(210, 7%, 93.5%);
 }
+
 @media screen and (max-width: 768px) {
 
     .col-res {
@@ -39,7 +41,9 @@ input:focus {
     border-color: #1867b6 !important;
     box-shadow: 0 0 0 0.2rem rgba(22, 104, 184, 0.4) !important;
 }
-
+button:focus{
+    outline:0;
+}
 /*navbar*/
 
 .nav-link {
@@ -177,6 +181,22 @@ input:focus {
 .btn-med:focus{
     border-color:  #99BBDB;
 }
+
+.cl {
+    color: #BEBEC0;
+    display: inline;
+    border: 0;
+    background: transparent;
+    transition: color 0.25s;
+}
+
+.cl:hover {
+    color: var(--red);
+}
+
+.cl:focus{
+    color: var(--red-1);
+}
 #like{
     margin-top: 3px;
     margin-right: 10px;
@@ -189,6 +209,7 @@ input:focus {
 }
 
 /*unical elements*/
+
 #log-head{
     color: white;
     background-image: linear-gradient(to left, #1b77d3, #1560aa);

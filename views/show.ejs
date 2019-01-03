@@ -78,8 +78,13 @@ function dif(date1, date2) {
                              alt="img" class="fullimg border-socium rounded-circle border-dark "height="32">
                         </figure>
                         <div class="media-body">
-                            <h6 class="mt-0"><%=comment.user.username%></h6>
+                            <h6 class="mt-0"><%=comment.user.username%>
+                            <form action="/s/all/<%=post.id%>/comments/<%=comment.id%>?_method=DELETE" 
+                            method="POST" style="display: inline">
+                                <button class="cl float-right" ><i class="fas fa-trash"></i></button>
+                            </form></h6>
                             <%=comment.text%>
+                            
                         </div>
                     </li>
                 </ul>

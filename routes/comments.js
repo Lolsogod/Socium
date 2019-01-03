@@ -32,5 +32,14 @@ app.post('/', isLoggedIn, (req, res) =>{
         }
     });
 });
-
+//destroy
+app.delete('/:coId', isLoggedIn, (req, res) =>{
+    Comm.findByIdAndDelete(req.params.coId, (err) =>{
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect('back');
+        }
+    });
+});
 module.exports = app;
