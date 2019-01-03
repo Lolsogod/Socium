@@ -11,12 +11,12 @@
         <input type="hidden"  name="Post[user.username]" value="<%=curUser.username%>">
         <input type="hidden"  name="Post[user.id]" value="<%=curUser._id%>">
         <h6>Title</h6>
-        <input type="text" class="mt-1 mb-1 form-control" name="Post[title]" placeholder="Title..." required>
+        <input type="text" class="mt-1 mb-1 form-control" name="Post[title]" placeholder="Title..."  required tabindex="1">
         <h6>Image</h6>
-        <input type="url" class="mt-1 mb-1 form-control" name="Post[img]" placeholder="Image url...">
+        <input type="url" class="mt-1 mb-1 form-control" name="Post[img]" placeholder="Image url..." tabindex="2">
         <h6>Text</h6>
-        <textarea class="mt-1 mb-1 form-control" name="Post[body]" placeholder="Text.." rows="3"></textarea>
-        <input type="submit" class="ml-2 mt-2 btn btn-primary float-right">
+        <textarea class="mt-1 mb-1 form-control" name="Post[body]" placeholder="Text.." rows="3" tabindex="3"></textarea>
+        <input type="submit" class="ml-2 mt-2 btn btn-primary float-right" tabindex="4">
         <a href="/s/all" class="mt-2 btn btn-outline-primary float-right">Cancel</a>
       </form>
     </div>

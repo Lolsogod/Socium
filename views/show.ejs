@@ -92,8 +92,8 @@ function dif(date1, date2) {
             <%});%>
             <%if(curUser){%>
                 <form action="/s/all/<%= post.id %>/comments" method="POST">
-                  <textarea class="mt-1 form-control" name="comment[text]" placeholder="Text.." rows="3"></textarea>
-                  <input type="submit" class="ml-2 mt-2 btn btn-primary float-right" value="Add">
+                  <textarea class="mt-1 form-control" name="comment[text]" placeholder="Text.." rows="3" tabindex="1" required></textarea>
+                  <input type="submit" class="ml-2 mt-2 btn btn-primary float-right" value="Add" tabindex="2">
                 </form>
             <%} else {%>
             <h6 class="text-muted">You must <a href="/register">register</a> or <a href="/login">log in</a> to leave comments</h6>
