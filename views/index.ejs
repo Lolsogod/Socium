@@ -69,7 +69,7 @@ function checkIMG(url) {
                 <%}%>
         </div>
         <%if(checkIMG(post.img)){%>
-            <img src="<%= post.img %>" class="card-img" alt="Failed to load post img">
+            <img onload="check(this)" id="post-img" src="<%= post.img %>" class="card-img" alt="Failed to load post img">
         <%}%>
         <div class="card-footer ">
             <div class="med">
