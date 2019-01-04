@@ -3,7 +3,13 @@
 <div class="col-res col-md-6 ">
   <!--new post form-->
   <div class="card">
-    <div id="form-head" class="card-header">
+    <div <%if(error && error.length > 0){%>
+            id="form-error"
+          <%}else{%>
+            id="form-head"
+          <%}%>
+           class="card-header">
+      <%=error%>
       <h4>Join socium</h4>
     </div>
     <div class="card-body">

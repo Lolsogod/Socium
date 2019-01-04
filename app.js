@@ -10,6 +10,7 @@ const express = require('express'),
     methodOverride = require('method-override'),
     passport = require('passport'),
     localStrategy = require('passport-local'),
+    flash = require('connect-flash'),
     /*Post = require('./models/post'),
     Comm = require('./models/comment'),*/
     User = require('./models/user');
@@ -30,6 +31,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(flash());
 
 //Passport config
 app.use(require('express-session')({
@@ -43,6 +45,8 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) =>{
+    res.locals.error = req.flash('error');
+    res.locals.success = req.flash('success');
     res.locals.curUser = req.user;
     next();
 });

@@ -1,0 +1,21 @@
+<%if(error && error.length > 0){%>
+<div id="form-error" class="mb-2 alert alert-dismissible fade show mb-0" role="alert">
+    <div class="container">
+    <b><%=error%></b>
+    <button type="button" class="pt-2 close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+</div>
+<%}%>
+
+<%if(success && success.length > 0){%>
+<div id="form-succ" class="mb-2 alert alert-dismissible fade show mb-0" role="alert">
+    <div class="container">
+    <b><%=success%></b>
+    <button type="button" class="pt-2 close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+</div>
+<%}%>

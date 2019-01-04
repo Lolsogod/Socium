@@ -22,9 +22,8 @@
     .no-mob {
         display: none;
     }
-
-    #form-head{
-        border-radius: 0;
+    .card-header{
+        border-radius: 0 !important;
     }
 
 }
@@ -66,6 +65,19 @@ button:focus{
 
 .bg-grad {
     background-image: linear-gradient(to left, #1b77d3, #1560aa);
+    background-size: 400% 400%;
+    animation: grad 5s linear none infinite normal; 
+}
+@keyframes grad{
+    0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
 }
 
 .card {
@@ -86,6 +98,22 @@ button:focus{
 #form-head{
     color: white;
     background-image: linear-gradient(to left, #1b77d3, #1560aa);
+    background-size: 400% 400%;
+    animation: grad 5s linear none infinite normal;
+}
+
+#form-error{
+    color: white;
+    background-image: linear-gradient(to left, #d31b1b, #aa1515);
+    background-size: 400% 400%;
+    animation: grad 5s linear none infinite normal;
+}
+
+#form-succ{
+    color: white;
+    background-image: linear-gradient(to left, #18b420, #107e22);
+    background-size: 400% 400%;
+    animation: grad 5s linear none infinite normal;
 }
 
 /*buttons*/

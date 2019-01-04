@@ -8,7 +8,8 @@ const express = require('express'),
 app.get('/', (req, res) =>{
     Post.find({}, (err, posts) =>{
         if (err) {
-            console.log(err);
+            req.flash('error', 'Something went wrong');
+            res.redirect('/s/all/');
         } else {
             res.render('index', {
                 posts: posts
@@ -24,7 +25,8 @@ app.get('/new', mw.isLoggedIn, (req, res) =>{
 app.post('/', mw.isLoggedIn, (req, res) =>{
     Post.create(req.body.Post, (err/*,createdPost*/) =>{
         if (err) {
-            console.log(err);
+            req.flash('error', 'Something went wrong');
+            res.redirect('/s/all/');
         } else {
             res.redirect('/s/all');
         }
@@ -35,7 +37,8 @@ app.get('/:id', (req, res) =>{
     if (req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
     Post.findById(req.params.id).populate('comments').exec((err, foundPost) =>{
         if (err) {
-            console.log(err);
+            req.flash('error', 'Something went wrong');
+            res.redirect('/s/all/');
         } else {
             res.render('show', {
                 post: foundPost
@@ -54,8 +57,10 @@ app.get('/:id/edit', mw.isOwner, (req, res) =>{
 app.put('/:id', mw.isOwner, (req, res) =>{
     Post.findByIdAndUpdate(req.params.id, req.body.Post, (err/*, updatedPost*/) =>{
         if (err) {
-            console.log(err);
+            req.flash('error', 'Something went wrong');
+            res.redirect('/s/all/');
         } else {
+            req.flash('success', 'Updated successfully');            
             res.redirect(req.params.id);
         }
     });
@@ -64,6 +69,7 @@ app.put('/:id', mw.isOwner, (req, res) =>{
 //destroy
 app.delete('/:id', mw.isOwner, (req, res) =>{
     Post.findByIdAndDelete(req.params.id, (/*err*/) =>{
+        req.flash('success', 'Removed successfully');    
         res.redirect('/s/all/');
     });
 });
