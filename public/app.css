@@ -69,8 +69,8 @@ button:focus{
 .bg-grad {
     background-image: linear-gradient(to left, #1b77d3, #1560aa);
     background-size: 400% 400%;
+    animation: grad 5s linear none infinite normal;
     -moz-animation: none;
-    animation: grad 5s linear none infinite normal; 
 }
 @keyframes grad{
     0% {
